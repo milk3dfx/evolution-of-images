@@ -1,0 +1,24 @@
+
+#field{
+	width:1100px;
+}
+.individuals{
+	border:1px solid #000000;
+	margin:1px;
+}
+
+.individuals:hover{
+	/*border:1px solid #FF0000;*/
+}
+
+.individuals-selected{
+	border:2px solid #FF0000;
+	margin:0px;
+}
+
+#pPopulationInfa{
+	height: 100px;
+}
+#cReference{
+	float:left;
+}
