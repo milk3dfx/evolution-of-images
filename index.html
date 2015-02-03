@@ -3,6 +3,7 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+		<script type="text/javascript" src="js/PriorityQueue.js"></script>
 		<script type="text/javascript" src="js/imgEvolution.js"></script>
 	</head>
 	<body>
@@ -15,16 +16,14 @@
 			<input id="bSelectAll" type="button" value="Select All"></input>
 			<input id="bSelectSome" type="button" value="Select Some"></input>
 			<input id="bSelectBest" type="button" value="Select Best"></input>
-			<input id="bResults" type="button" value="Results"></input>
 			<input id="bStart" type="button" value="Start"></input>
 			<input id="bStop" type="button" value="Stop"></input>
 		</div>
-		<div id="pPopulationInfa">
+		<div id="pPopulationInfo">
 			<canvas id = "cReference" width='100' height='100'></canvas>
-			<div id="tGeneration">0</div>
-			<div id="tSimilarity">0</div>
+			<div id="tGeneration">Generation: 0</div>
+			<div id="tSimilarity">Average similarity: 0</div>
 		</div>
 		<div id="field"></div>
-		<div id="results"></div>
 	</body>
 <html>
