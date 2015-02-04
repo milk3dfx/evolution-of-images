@@ -5,7 +5,7 @@
 
 var generation = 0;
 var goalGeneration=0;
-var populationSize = 100;
+var populationSize = 80;
 var updating = false;
 var aveSimilarity=0;
 
@@ -63,9 +63,8 @@ function NextGeneration(){
 		return;
 	// Remove all none selected members of current population
 	$(".individuals").remove();
-	
 	aveSimilarity = 0;
-	var reference = $('#cReference')[0];
+	
 	selectedIndividuals.each(function(index, element){
 		for(var i=0; i<2; i++){
 			var w = Math.floor((Math.random()*100)+1);
@@ -85,6 +84,7 @@ function NextGeneration(){
 			ctxChild.drawImage(selectedIndividuals[indexParent2], 0, 0);
 				
 			ctxChild.putImageData(imgData, x, y);
+			var reference = $('#cReference')[0];
 			var sim = compareCanvas(child, reference);
 			$(child).attr("sim", sim);
 			aveSimilarity += sim;
@@ -99,7 +99,7 @@ function NextGeneration(){
 	$(".individuals").each(function(index, element){
 		// Rectangle mutations
 		// Large
-		var size = (aveSimilarity<400)?40:10;
+		var size = (aveSimilarity<450)?40:15;
 		if(Math.floor((Math.random()*10))==1){
 			drawRandomRactangle(element.getContext('2d'), size);
 		}
@@ -163,13 +163,8 @@ function CreateGeneration(){
 	SelectBest();
 	NextGeneration();
 }
-
-
-$( document ).ready(function() {
-	// Generation animation
-	var genPeriod = 10;
-	var genInterval;
-	
+// Update reference image
+function UpdateReference(src){
 	// Load reference image
 	var imgReference = new Image();
 	imgReference.onload = function() {
@@ -177,10 +172,16 @@ $( document ).ready(function() {
 		var ctxReference = $('#cReference')[0].getContext('2d');
         ctxReference.drawImage(imgReference, 0, 0);
 	};
-	imgReference.src = "img/1.png";
-	//imgReference.src = "img/2.png";
-	//imgReference.src = "img/3.png";
-	//imgReference.src = "img/4.png";
+	imgReference.src = src;
+}
+
+$( document ).ready(function() {
+	// Generation animation
+	var genPeriod = 10;
+	var genInterval;
+	
+	// Load initial reference image
+	UpdateReference("img/1.png");
 	
 	// Create initial population
 	createInitialPopulation();
@@ -203,5 +204,9 @@ $( document ).ready(function() {
 	//Stop evolution process
 	$("#bStop").click(function(){
 		window.clearInterval(genInterval);
+	});
+	// Select new reference image
+	$("#sImageList").change(function(){
+		UpdateReference($( "select option:selected" ).val());
 	});
 });

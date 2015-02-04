@@ -7,12 +7,12 @@
 		<script type="text/javascript" src="js/imgEvolution.js"></script>
 	</head>
 	<body>
-		<h1>Image evolution</h1>
-		<div>
+		<h1>Evolution of images</h1>
+		<div class = "panel">
 			<input id="bNewPopulation" type="button" value="New population"></input>
 			<input id="bNextGeneration" type="button" value="Next generation"></input>
 		</div>
-		<div>
+		<div class = "panel">
 			<input id="bSelectAll" type="button" value="Select All"></input>
 			<input id="bSelectSome" type="button" value="Select Some"></input>
 			<input id="bSelectBest" type="button" value="Select Best"></input>
@@ -21,6 +21,12 @@
 		</div>
 		<div id="pPopulationInfo">
 			<canvas id = "cReference" width='100' height='100'></canvas>
+			<select id="sImageList">
+				<option value="img/1.png">Image 1</option>
+				<option value="img/2.png">Image 2</option>
+				<option value="img/3.png">Image 3</option>
+				<option value="img/4.png">Image 4</option>
+			</select>
 			<div id="tGeneration">Generation: 0</div>
 			<div id="tSimilarity">Average similarity: 0</div>
 		</div>
